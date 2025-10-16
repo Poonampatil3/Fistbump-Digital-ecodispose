@@ -9,7 +9,7 @@ const CameraInput = ({ onImageCapture, onImageUpload }) => {
   const fileInputRef = useRef(null);
   const [imgSrc, setImgSrc] = useState(null);
   const [error, setError] = useState(null);
-  const [isCapturing, setIsCapturing] = useState(false);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
 
   const capture = useCallback(() => {
     if (!webcamRef.current) return;
@@ -29,10 +29,9 @@ const CameraInput = ({ onImageCapture, onImageUpload }) => {
     const file = event.target.files[0];
     if (file && file.type.startsWith('image/')) {
       const reader = new FileReader();
-      reader.onloadend = async () => {
+      reader.onloadend = () => {
         setImgSrc(reader.result);
         setError(null);
-        await handleAnalysis(reader.result);
       };
       reader.onerror = () => {
         setError('Failed to read image file');
@@ -80,7 +79,9 @@ const CameraInput = ({ onImageCapture, onImageUpload }) => {
 
   const handleAnalysis = async (imageData) => {
     try {
+      setIsAnalyzing(true);
       setError(null);
+      
       if (!imageData) {
         throw new Error('No image data provided');
       }
@@ -93,12 +94,15 @@ const CameraInput = ({ onImageCapture, onImageUpload }) => {
       }
 
       const result = await analyzeImage(processedImage);
+      
       if (onImageCapture) {
         onImageCapture(result);
       }
     } catch (err) {
       setError('Failed to analyze image. Please try again.');
       console.error('Analysis error:', err);
+    } finally {
+      setIsAnalyzing(false);
     }
   };
 
@@ -157,14 +161,15 @@ const CameraInput = ({ onImageCapture, onImageUpload }) => {
           >
             <img src={imgSrc} alt="Captured" className="preview-img" />
             <div className="preview-actions">
-              <button onClick={retake} className="btn btn-secondary">
+              <button onClick={retake} className="btn btn-secondary" disabled={isAnalyzing}>
                 Retake
               </button>
               <button
                 className="btn btn-primary"
                 onClick={() => handleAnalysis(imgSrc)}
+                disabled={isAnalyzing}
               >
-                Analyze
+                {isAnalyzing ? 'Analyzing...' : 'Analyze'}
               </button>
             </div>
             {error && <div className="error-message">⚠️ {error}</div>}

@@ -11,38 +11,9 @@ const Identification = ({ onBack, onResult, selectedLocale }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isAnalyzing, setIsAnalyzing] = useState(false);
 
-  const handleImageCapture = async (imageData) => {
-    setIsAnalyzing(true);
-    try {
-      if (!imageData) {
-        throw new Error('No image data provided');
-      }
-      
-      const result = await analyzeImage(imageData);
-      onResult(result);
-    } catch (error) {
-      console.error('Error analyzing image:', error);
-      // Handle error appropriately - maybe show an error message to user
-    } finally {
-      setIsAnalyzing(false);
-    }
-  };
-
-  const handleImageUpload = async (file) => {
-    setIsAnalyzing(true);
-    try {
-      const reader = new FileReader();
-      reader.onloadend = async () => {
-        const result = await analyzeImage(reader.result);
-        onResult(result);
-      };
-      reader.readAsDataURL(file);
-    } catch (error) {
-      console.error('Error analyzing uploaded image:', error);
-      // Handle error appropriately
-    } finally {
-      setIsAnalyzing(false);
-    }
+  // This receives the analyzed result from CameraInput
+  const handleImageCapture = (result) => {
+    onResult(result);
   };
 
   const handleTextSearch = (e) => {
@@ -186,7 +157,6 @@ const Identification = ({ onBack, onResult, selectedLocale }) => {
                 >
                   <CameraInput 
                     onImageCapture={handleImageCapture}
-                    onImageUpload={handleImageUpload}
                   />
                 </motion.div>
               )}
