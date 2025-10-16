@@ -1,0 +1,351 @@
+/* CameraInput.css */
+
+:root {
+  --primary-color: #4caf50;
+  --secondary-color: #757575;
+  --error-color: #f44336;
+  --surface-color: #fff;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --border-radius: 8px;
+  --box-shadow-light: 0 10px 30px rgba(76, 175, 80, 0.1);
+  --box-shadow-strong: 0 10px 40px rgba(76, 175, 80, 0.3);
+}
+
+body {
+  font-family: var(--font-family);
+  background: #fafafa;
+  margin: 0;
+  padding: 0;
+}
+
+.camera-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+  position: relative;
+}
+
+.camera-input-panel {
+  width: 100%;
+  background: var(--surface-color);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--box-shadow-light);
+  text-align: center;
+}
+
+.camera-input-header h2 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.8rem;
+  color: var(--primary-color);
+}
+
+.camera-input-header p {
+  margin: 0;
+  color: var(--secondary-color);
+  font-size: 1rem;
+}
+
+.drag-drop-area {
+  border: 3px dashed var(--primary-color);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  margin: 1rem 0;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--primary-color);
+}
+
+.drag-drop-area.dragging {
+  background: rgba(76, 175, 80, 0.1);
+  border-color: #388e3c;
+}
+
+.upload-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  animation: bounce 2s infinite ease-in-out;
+}
+
+.drag-text strong {
+  font-weight: 700;
+}
+
+.or-text {
+  margin-top: 0.5rem;
+  color: var(--secondary-color);
+  font-size: 0.9rem;
+}
+
+.divider {
+  margin: 1rem 0;
+  position: relative;
+  text-align: center;
+  font-weight: 600;
+  color: var(--secondary-color);
+}
+
+.divider span {
+  background: var(--surface-color);
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid var(--secondary-color);
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.btn {
+  padding: 0.7rem 1.3rem;
+  border-radius: var(--border-radius);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.btn-camera {
+  background: var(--primary-color);
+  color: white;
+  width: 100%;
+  max-width: 300px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-camera:disabled {
+  background: #a5d6a7;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: #e0e0e0;
+  color: var(--secondary-color);
+  margin-right: 1rem;
+}
+
+.btn-secondary:hover {
+  background: #bdbdbd;
+}
+
+.btn-capture {
+  background: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  position: relative;
+  overflow: visible;
+}
+
+.capture-ring {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 var(--primary-color);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.btn-capture:hover .capture-ring {
+  box-shadow: 0 0 10px 10px var(--primary-color);
+}
+
+.camera-view {
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+  background: var(--surface-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow-strong);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.camera-container {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  background: #000;
+}
+
+.camera-video {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+  display: block;
+}
+
+.video-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  font-weight: 600;
+}
+
+.loading-spinner {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  animation: spin 1s linear infinite;
+}
+
+.camera-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.focus-frame {
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  width: 70%;
+  height: 70%;
+  border: 2px solid var(--primary-color);
+  box-sizing: border-box;
+  border-radius: var(--border-radius);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--primary-color);
+}
+
+.corner-tl {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+  border-top-left-radius: var(--border-radius);
+}
+
+.corner-tr {
+  top: 0;
+  right: 0;
+  border-left: none;
+  border-bottom: none;
+  border-top-right-radius: var(--border-radius);
+}
+
+.corner-bl {
+  bottom: 0;
+  left: 0;
+  border-right: none;
+  border-top: none;
+  border-bottom-left-radius: var(--border-radius);
+}
+
+.corner-br {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
+  border-bottom-right-radius: var(--border-radius);
+}
+
+.scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  opacity: 0.7;
+  animation: scan 2s linear infinite;
+}
+
+.image-preview {
+  background: var(--surface-color);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  text-align: center;
+  box-shadow: var(--box-shadow-light);
+  max-width: 600px;
+}
+
+.preview-img {
+  max-width: 100%;
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+}
+
+.preview-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.error-message {
+  margin-top: 1rem;
+  color: var(--error-color);
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Animations */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px 2px rgba(76, 175, 80, 0.8);
+  }
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(-50%);
+  }
+  100% {
+    transform: translateY(150%);
+  }
+}

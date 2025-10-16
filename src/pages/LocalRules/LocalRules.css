@@ -1,0 +1,358 @@
+.local-rules-page {
+  min-height: 100vh;
+  padding: 2rem 0;
+}
+
+.location-selector {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  padding: 1.5rem;
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  max-width: 400px;
+}
+
+.dark-mode .location-selector {
+  background: var(--dark-surface);
+}
+
+.location-selector label {
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.location-selector select {
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--primary);
+  border-radius: var(--border-radius);
+  background: var(--white);
+  color: var(--dark);
+  font-weight: 500;
+  flex: 1;
+}
+
+.dark-mode .location-selector select {
+  background: var(--dark);
+  color: var(--light);
+  border-color: var(--primary-light);
+}
+
+/* Rules Overview */
+.rules-overview h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: var(--primary);
+  font-size: 2rem;
+}
+
+.bins-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.bin-card {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: var(--transition);
+  border: 3px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.dark-mode .bin-card {
+  background: var(--dark-surface);
+}
+
+.bin-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.bin-card.active {
+  border-color: currentColor;
+}
+
+.bin-card.yellow {
+  color: #FFD600;
+}
+
+.bin-card.blue {
+  color: #1976D2;
+}
+
+.bin-card.green {
+  color: #388E3C;
+}
+
+.bin-card.gray {
+  color: #757575;
+}
+
+.bin-color-indicator {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 3px solid var(--white);
+  box-shadow: var(--shadow);
+}
+
+.bin-card.yellow .bin-color-indicator {
+  background: #FFD600;
+}
+
+.bin-card.blue .bin-color-indicator {
+  background: #1976D2;
+}
+
+.bin-card.green .bin-color-indicator {
+  background: #388E3C;
+}
+
+.bin-card.gray .bin-color-indicator {
+  background: #757575;
+}
+
+.bin-info h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.bin-category {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.bin-tip {
+  color: var(--gray);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.bin-details {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .bin-details {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bin-details h4 {
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.bin-details ul {
+  list-style: none;
+  margin-bottom: 1rem;
+}
+
+.bin-details li {
+  padding: 0.25rem 0;
+  color: var(--gray);
+}
+
+.pickup-schedule {
+  background: rgba(76, 175, 80, 0.1);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin-top: 1rem;
+}
+
+.pickup-schedule h4 {
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+/* Quick Guide */
+.quick-guide {
+  margin-bottom: 4rem;
+}
+
+.quick-guide h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--primary);
+}
+
+.guide-tips {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.tip-card {
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border: 2px solid transparent;
+}
+
+.dark-mode .tip-card {
+  background: var(--dark-surface);
+}
+
+.tip-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-5px);
+}
+
+.tip-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.tip-card h4 {
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.tip-card p {
+  color: var(--gray);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Common Mistakes */
+.common-mistakes {
+  margin-bottom: 4rem;
+}
+
+.common-mistakes h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--primary);
+}
+
+.mistakes-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.mistake-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.dark-mode .mistake-item {
+  background: var(--dark-surface);
+}
+
+.mistake-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.mistake-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.mistake-content h4 {
+  margin-bottom: 0.5rem;
+  color: #F44336;
+}
+
+.mistake-content p {
+  color: var(--gray);
+  line-height: 1.5;
+}
+
+/* Emergency Contacts */
+.emergency-contacts h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--primary);
+}
+
+.contacts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.contact-card {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  text-align: center;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border: 2px solid transparent;
+}
+
+.dark-mode .contact-card {
+  background: var(--dark-surface);
+}
+
+.contact-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-5px);
+}
+
+.contact-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.contact-card h4 {
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.contact-card p {
+  color: var(--gray);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .location-selector {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  
+  .bins-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .guide-tips {
+    grid-template-columns: 1fr;
+  }
+  
+  .mistakes-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .contacts-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .mistake-item {
+    flex-direction: column;
+    text-align: center;
+  }
+}

@@ -1,0 +1,31 @@
+/* Enhanced Custom Cursor - Visible alongside default cursor */
+.custom-cursor {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #4caf50;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.custom-cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: #4caf50;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.8;
+}
+
+/* Hide custom cursor on mobile */
+@media (max-width: 768px) {
+  .custom-cursor,
+  .custom-cursor-dot {
+    display: none;
+  }
+}
